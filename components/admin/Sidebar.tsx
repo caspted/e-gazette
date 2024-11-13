@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "next/link"
 
 export default function Sidebar() {
   return (
@@ -9,8 +10,10 @@ export default function Sidebar() {
           <li className="text-center my-6">
             Members
           </li>
-          <li className="text-center my-6">
-            Events
+          <li className="text-center my-6 hover:bg-blue-600">
+            <Link href="/admin/events">
+              Events
+            </Link>
           </li>
           <li className="text-center my-6">
             Resolutions
