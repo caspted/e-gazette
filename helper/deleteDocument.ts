@@ -1,4 +1,4 @@
-import { fireStore } from "@/firebase/initializeFirebase";
+import { firestore } from "@/firebase/initializeFirebase";
 import { deleteDoc, doc } from "firebase/firestore";
 
 export default async function deleteDocument(
@@ -6,7 +6,7 @@ export default async function deleteDocument(
   documentId: string
 ) {
   try {
-    const documentRef = doc(fireStore, collectionName, documentId);
+    const documentRef = doc(firestore, collectionName, documentId);
     await deleteDoc(documentRef);
   } catch (error) {
     console.error("Error deleting document: ", error);

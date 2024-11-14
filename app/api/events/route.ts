@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import { fireStore } from "@/firebase/initializeFirebase";
+import { firestore } from "@/firebase/initializeFirebase";
 import { collection, getDocs } from "firebase/firestore"
 
 export default async function GET() {
   try {
-    const query = await getDocs(collection(fireStore, "Events"))
+    const query = await getDocs(collection(firestore, "Events"))
     const events = query.docs.map((doc) => doc.data())
 
     return NextResponse.json(events, { status: 200 });

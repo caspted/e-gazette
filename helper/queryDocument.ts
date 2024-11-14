@@ -1,4 +1,4 @@
-import { fireStore } from "@/firebase/initializeFirebase";
+import { firestore } from "@/firebase/initializeFirebase";
 import { collection, where, query, getDocs } from "firebase/firestore";
 
 export default async function queryDocument(
@@ -7,7 +7,7 @@ export default async function queryDocument(
   searchValue: string
 ) {
 
-  const collectionRef = collection(fireStore, collectionName);
+  const collectionRef = collection(firestore, collectionName);
 
   const queryParameters = query(
     collectionRef,

@@ -1,21 +1,42 @@
 'use client'
-import {useState} from 'react';
+import React, {useState} from 'react';
 import uploadDocument from "@/helper/uploadDocument";
 
 export default function InputEvents() {
   const [eventName, setEventName] = useState<string>("");
   const [details, setDetails] = useState<string>("");
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault()
+
+    if (!validateForm()) return
+
     try {
       await uploadDocument("Events", {
         event: eventName,
         details: details
       })
       console.log("Successfully uploaded")
+
+      setEventName("")
+      setDetails("")
     } catch (error) {
       console.error("Failed to upload", error)
     }
+  }
+
+  const validateForm = (): boolean => {
+    if (!eventName.trim()) {
+      console.error("Please enter a valid name");
+      return false;
+    }
+
+    if (!details.trim()) {
+      console.error("Please enter a valid details");
+      return false;
+    }
+
+    return true;
   }
 
   return (
